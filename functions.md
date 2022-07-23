@@ -20,7 +20,6 @@
 * [say](#say)
 * [runThread](#runthread)
 * [isInside](#isinside)
-* [setPos](#setpos)
 * [collectObject](#collectobject)
 * [inWorld](#inworld)
 * [useDoor](#usedoor)
