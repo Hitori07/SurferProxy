@@ -1,5 +1,4 @@
 # Functions
-* [getBot](#getbot)
 * [sendPacket](#sendpacket)
 * [SendPacketRaw](#sendpacketraw)
 * [findPath](#findpath)
@@ -16,41 +15,33 @@
 * [placeTile](#placetile)
 * [hitTile](#hittile)
 * [wrenchTile](#wrenchtile)
-* [Warp](#warp)
-* [Move](#move)
+* [warp](#warp)
 * [setPos](#setpos)
-* [Say](#say)
-* [RunThread](#runthread)
-* [GetAllBot](#getallbot)
-* [Connect](#connect)
-
-## getBot
-`getBot(string botname)`
-
-Return bots from list
-
-Example:
-```lua
-bot = getBot("growid")
-bot:sendPacket("action|respawn", 2)
-```
-
+* [say](#say)
+* [runThread](#runthread)
+* [isInside](#isinside)
+* [setPos](#setpos)
+* [collectObject](#collectobject)
+* [inWorld](#inworld)
+* [useDoor](#usedoor)
+* [itemExit](#itemexit)
+* [isInside](#isinside)
 
 ## sendPacket
-`sendPacket( string packet, int type)`
+`sendPacket(bool client,string packet, int type)`
 
-Sends text packet with selected type to client .
+Sends text packet with selected type to server .
 
 Example:
 ```lua
 -- Sends respawn packet to server
-sendPacket("action|respawn", 2)
+sendPacket(false,"action|respawn", 2)
 ```
 
 ## sendPacketRaw
-`sendPacketRaw( GamePacket packet)`
+`sendPacketRaw(bool client,GamePacket packet,bool client)`
 
-Sends [GamePacket](Structs.md#gamepacket) to server.
+Sends [GamePacket](Structs.md#gamepacket) to server
 
 Example:
 ```lua
@@ -58,7 +49,7 @@ Example:
 packet = {}
 packet.type = 10 
 packet.int_data = 48 -- Clothing ID (Jeans)
-sendPacketRaw(packet)
+sendPacketRaw(false,packet) Sends to server.
 ```
 
 ## findPath
@@ -227,38 +218,26 @@ wrenchTile(0,0)
 ```
 
 ## placeTile
-`placeTile(int x,int y,int blockid)`
+`placeTile(int x,int y,int blockid,bool client)`
 
 Place Block To x,y
 
 Example:
 ```lua
 ---Place Dirt To 0,0
-placeTile(0,0,2)
+placeTile(0,0,2,false)
 
 ```
 
-## Warp
-`Warp(string x)`
+## warp
+`warp(string x)`
 
-Warp To x
+warp To x
 
 Example:
 ```lua
 warp("BUYGHC")
 
-```
-
-## Move
-`Move(string MOVE,int speed)`
-
-Example:
-```lua
--- Speed Default Value 1, Max Value 4
-Move("RIGHT",1)
-Move("LEFT",1)
-Move("UP",1)
-Move("DOWN",1)
 ```
 
 ## setPos
@@ -269,23 +248,23 @@ Example:
 --- Sets bot position
 setPos(0,0)
 ```
-## Say
-`Say(string text)`
+## say
+`say(string text)`
 
 Example:
 ```lua
 -- Send chat message
-Say("Hello")
+say("Hello")
 ```
 
-## RunThread
-`RunThread(function() 
+## runThread
+`runThread(function() 
 //code here
 end)`
 
 Example:
 ```lua
-RunThread(function()
+runThread(function()
 while true do
 log("New Thread")
 end
@@ -295,19 +274,54 @@ while true do
 log("Normal Thread")
 end
 ```
-## GetAllBot
+## isInside
+`isInside(int x,int y,int rad)`
 
 Example:
 ```lua
-for k,v in pairs(GetAllBot) do 
-v:Say("hi")
+if isInside(0, 0,5) then
+log("x 0, y 0 is in inside")
+else
+log("x 0, y 0 is not inside")
 end
 ```
 
-## Connect
-`Connect(string growid,string password,bool VdsSupport)`
+## collectObject
+`collectObject(int uid)`
 
 Example:
 ```lua
-Connect("mygrowid","mypassword",false)
+-- Collecting Object With UID
+collectObject(0)
+```
+## inWorld
+`inWorld()`
+
+Example:
+```lua
+if inWorld() then
+log("in world")
+else
+log("not in world")
+end
+```
+
+## itemExit
+`itemExit(int itemid)`
+
+Example:
+```lua
+if itemExit(2) then
+log("Dirt Exit In Inventory")
+else
+log("Dirt Not Exist In Inventory")
+end
+```
+
+## useDoor
+`useDoor(int x,int y)`
+
+Example:
+```lua
+useDoor(0,0)
 ```

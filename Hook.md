@@ -6,15 +6,14 @@
 
 Example For Varlist:
 ```lua
-bot = getBot("growid")
 function OnVarlist(varlist)
-if varlist[0]=="OnConsoleMessage"
+if varlist.get(0)=="OnConsoleMessage"
 then
-log(varlist[1])
+log(varlist.get(1))
 end
 end
 
-bot:AddHook(OnVarlist)
+AddHook(OnVarlist)
 ```
 
 ## RemoveHook
