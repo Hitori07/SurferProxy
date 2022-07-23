@@ -1,5 +1,5 @@
-# SurferBot-Docs
-Growtopia Bot Application
+# SurferProxy-Docs
+Growtopia Proxy Application
 
 
-Discord Link : https://discord.gg/TSf7xSKCZ5
+Discord Link : https://discord.gg/RmFmBd22nS
