@@ -1,6 +1,7 @@
 # Functions
 * [sendPacket](#sendpacket)
-* [SendPacketRaw](#sendpacketraw)
+* [sendPacketRaw](#sendpacketraw)
+* [sendVarlist](#sendpacketraw)
 * [findPath](#findpath)
 * [getLocal](#getlocal)
 * [getInventory](#getinventory)
@@ -25,6 +26,7 @@
 * [useDoor](#usedoor)
 * [itemExit](#itemexit)
 * [isInside](#isinside)
+* [log](#log)
 
 ## sendPacket
 `sendPacket(bool client,string packet, int type)`
@@ -48,7 +50,19 @@ Example:
 packet = {}
 packet.type = 10 
 packet.int_data = 48 -- Clothing ID (Jeans)
-sendPacketRaw(false,packet) Sends to server.
+sendPacketRaw(false,packet)-- Sends to server.
+```
+## sendVarlist
+`sendVarlist(variantlist_t& list)`
+
+Sends [variantlist_t](Structs.md#variantlist_t)
+
+```lua
+-- Sends OnConsoleMessage to clients.
+varlist = {}
+varlist[0] = "OnConsoleMessage"
+varlist[1] = "hi!!"
+sendVarlist(varlist)
 ```
 
 ## findPath
@@ -65,7 +79,7 @@ findPath(0, 0)
 ## getLocal
 `getLocal()`
 
-Returns local [NetAvatar](#Structs.md#netavatar) struct
+Returns local [NetAvatar](#Structs.md#netavatar)
 
 Example:
 ```lua
@@ -90,7 +104,7 @@ end
 ## getPlayers
 `getPlayers()`
 
-Returns table of [NetAvatars](Structs.md#netavatar)
+Returns table of [NetAvatar](Structs.md#netavatar)
 
 Example:
 ```lua
@@ -323,4 +337,16 @@ end
 Example:
 ```lua
 useDoor(0,0)
+```
+
+## log
+`log(arg)`
+
+Print to Growtopia console
+
+Example:
+```lua
+log("hello")
+log(111)
+log(true)
 ```
