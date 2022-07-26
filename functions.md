@@ -231,14 +231,14 @@ wrenchTile(0,0)
 ```
 
 ## placeTile
-`placeTile(int x,int y,int blockid,bool client)`
+`placeTile(int tile,int x,int y,bool client)`
 
 Place Block To x,y
 
 Example:
 ```lua
 ---Place Dirt To 0,0
-placeTile(0,0,2,false)
+placeTile(2,0,0,false)
 
 ```
 
