@@ -20,11 +20,10 @@
 * [setPos](#setpos)
 * [say](#say)
 * [runThread](#runthread)
-* [isInside](#isinside)
 * [collectObject](#collectobject)
 * [inWorld](#inworld)
 * [useDoor](#usedoor)
-* [itemExit](#itemexit)
+* [itemExist](#itemexist)
 * [isInside](#isinside)
 * [log](#log)
 
@@ -319,13 +318,13 @@ log("not in world")
 end
 ```
 
-## itemExit
-`itemExit(int itemid)`
+## itemExist
+`itemExist(int itemid)`
 
 Example:
 ```lua
-if itemExit(2) then
-log("Dirt Exit In Inventory")
+if itemExist(2) then
+log("Dirt Exist In Inventory")
 else
 log("Dirt Not Exist In Inventory")
 end
